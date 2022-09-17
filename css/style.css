@@ -62,7 +62,7 @@
 
 .header__left img {
     height: 60px;
-    cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Owo_and_UwuPointer.png'), default !important;
+    /* cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Owo_and_UwuPointer.png'), default !important; */
 
 }
 
@@ -98,7 +98,7 @@
     display: flex;
     align-items: flex-end;
     color: #000;
-    cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Owo_and_UwuPointer.png'), default !important;
+    /* cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Owo_and_UwuPointer.png'), default !important; */
 
 }
 
@@ -184,7 +184,7 @@
 .header__right .header__linklist__item a {
     margin-right: 32px;
     text-decoration: none;
-    cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Owo_and_UwuPointer.png'), default !important;
+    /* cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Owo_and_UwuPointer.png'), default !important; */
 
     color: #000;
 }
@@ -355,7 +355,7 @@ to {
 
 .header-show-left-responsive  .zoom-left-more-item  .fa-solid{
     font-size: 25px;
-    cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Owo_and_UwuPointer.png'), default !important;
+    /* cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Owo_and_UwuPointer.png'), default !important; */
 
 }
 
