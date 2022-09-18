@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     /* box-sizing: border-box; */
-    cursor: url('https://cdn.custom-cursor.com/db/8702/32/k-pop-blaclpink-kim-jisoo-cursor.png'), default !important;
+    /* cursor: url('https://cdn.custom-cursor.com/db/8702/32/k-pop-blaclpink-kim-jisoo-cursor.png'), default !important; */
 
 }
 
@@ -12,6 +12,9 @@
     width: 100%;
     height: 100vh;
     /* background-color: aqua; */
+    background-image: url('https://wallpaperaccess.com/full/1910715.jpg');
+    background-size: 100% 100%;
+
     overflow: hidden;
 
 }
@@ -22,7 +25,8 @@
     justify-content: space-between;
     position: sticky;
     top: 0;
-    background-color: rgb(237, 237, 237);
+    /* background-color: rgb(237, 237, 237); */
+    background: transparent;
     z-index: 100;
     box-shadow: 0 8px 8px -9px rgba(0, 0, 0, 0.75);
 
@@ -479,6 +483,7 @@ to {
 }
 .search-content-data .product-search-content-data .sub-product-display  .content-sub-content-display h2 {
     font-weight: 900;
+    font-size: 22px;
 }
 
 
@@ -732,7 +737,7 @@ to {
 
 }
 
-@media (max-width: 700px)
+@media (max-width: 750px)
 {
     .header .header__right {
         display: none;
@@ -764,7 +769,7 @@ to {
 @media (max-width: 400px) 
 {
     .header {
-        height: 50px;
+        /* height: 50px; */
 
     }
     .header .header__left img {
