@@ -327,25 +327,30 @@
 
             <div class="header__right">
                 <ul class="header__linklist">
-                    <li class="header__linklist__item">
-                        <a href="#" class="click-form-search">Search</a>
-                    </li>
-                    <li class="header__linklist__item">
-                        <a href="#">Login</a>
-                    </li>
-                    <li class="header__linklist__item">
-                        <a href="#" class="click-form-cart">Cart
-                            <span class="header__cart__count">0</span>
-                        </a>
-                    </li>
+                    <a href="#" class="click-form-search">Search</a>
+                </ul>
+                <ul class="header__linklist">  
+                    <a href="views/login.php">Account</a>
+                    <!-- <li class="menu_login"><a href="views/login.php">Đăng nhập</a></li> -->
+                    <!-- <li class="menu_login"><a href="#">Đăng ký</a></li>
+                    <li class="menu_login"><a href="#">Đăng xuất</a></li> -->
+                </ul>
+                <ul class="header__linklist">
+                    <a href="#" class="click-form-cart">Cart
+                    <span class="header__cart__count">0</span>
+                </a>
+
                 </ul>
             </div>
 
-        </div>
         <!-- Header end -->
 
 
-        <!-- CONTENT -->
+        
+
+
+    </div>
+<!-- CONTENT -->
         <div class="content-life-sound">
             <div class="left-content-title">
                 <h1>Hello, We are 3 Anh, <br>Welcome to Live Sound Shop !</h1>
@@ -377,10 +382,6 @@
             </div>
         </div>
         <!-- END CONTENT -->
-
-
-    </div>
-
 
 
 </body>
