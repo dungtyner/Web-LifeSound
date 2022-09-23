@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #8232b4;
+}
+
+.wrapper {
+    background: white;
+    /* width: 100%; */
+    border-radius: 50px;
+    box-shadow: 0 25px 50px -9px rgba(0, 0, 0, 0.75);
+    display: flex;
+}
+
+/* image content */
+img {
+    margin: 70px;
+}
+
+.section__form  {
+    padding: 25px 30px;
+    float: right;
+    height: 100%;
+
+}
+
+.section__form  h1 {
+    font-size: 40px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.section__form  form {
+    margin: 20px 0;
+
+}
+
+/* first and last name */
+.section__form  form .name-details {
+    display: flex;
+}
+
+.section__form  .name-details .field:first-child {
+    margin-right: 10px;
+}
+
+.section__form  .name-details .field:last-child {
+    margin-left: 10px;
+}
+
+
+.section__form form .field {
+    display: flex;
+    margin-bottom: 25px;
+    flex-direction: column;
+    position: relative;
+}
+
+.section__form form .input__text input {
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.input__text .has-err { color: red;}
+.section__form form .field input {
+    outline: none;
+}
+
+/* Check box male or female */
+.section__form .checkbox {
+    display: flex;
+    margin-bottom: 25px;
+    font-size: 20px;
+
+}
+
+.section__form .checkbox input {
+    margin-right: 20px;
+}
+
+.section__form .checkbox p {
+    margin-right: 20px;
+}
+
+/* birthday day/month/year */
+.section__form  .date {
+    display: flex;
+}
+
+.section__form  .date p {
+    font-size: 20px;
+}
+.section__form .date select {
+    padding: 5px;
+    margin-left: 20px;
+    margin-bottom: 25px;
+}
+
+/* Button */
+.section__form .button {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.section__form form .button input {
+    height: 45px;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    background: #8232b4;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 13px;
+    
+}
+.section__form form .btn__show__password{
+    position: absolute;
+    right: 15px;
+    top: 17%;
+    border: none;
+    background-color: #fff;
+ 
+   
+}
+.section__form form .btn__show__password i {
+    
+    color: #ccc;
+    cursor: pointer;
+    /* transform: translateY(-50%); */
+}
+
+/* format link */
+.section__form .link {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 17px;
+}
+
+.section__form .link a {
+    color: #333;
+}
+
+.section__form .link a:hover {
+    text-decoration: underline;
+    color: #8232b4;
+}
+
+.show__note {
+    color: red;
+    background-color: rgb(185, 233, 159);
+    border-radius: 10px;
+    padding-left: 10px;
+    height: 25px;
+}
