@@ -36,7 +36,9 @@
     /* font-family: monospace; */
 
 }
-
+ul {
+    margin-bottom: 0px !important;
+}
 /* header__left */
 
 
@@ -73,6 +75,7 @@
 .header__left h1 {
     font-size: 30px;
     padding-left: 10px;
+    margin-bottom: 0px !important;
     font-style: italic;
     font-weight: 900;
     color: #f14ce6;
@@ -98,7 +101,7 @@
 #nav .nav__item a {
     margin: 10px;
     text-decoration: none;
-    font-weight: 500px;
+    font-weight: 700;
     display: flex;
     align-items: flex-end;
     color: #000;
@@ -525,7 +528,7 @@ to {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    align-items: center;
+    /* align-items: center; */
     width: 50%;
     height: calc(100% - 20px);
     margin: 10px;
@@ -670,7 +673,20 @@ to {
 
 
 
+.content-life-sound {
+    width: 100%;
+    height: calc(100% - 94.4px);
 
+    /* background-color: rgba(102, 51, 153, 0.642); */
+
+    display: flex;
+
+    overflow: scroll;
+}
+
+.content-life-sound::-webkit-scrollbar {
+    display: none;
+}
 
 
 
