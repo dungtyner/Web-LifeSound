@@ -1,0 +1,197 @@
+
+.wrapper_profile {
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    width: 60%;
+    /* display: flex; */
+    box-shadow: 0 7px 41px 2px #066e70;
+    display: grid;
+    margin: 70px auto;
+    grid-template-columns: 1fr 2fr;
+    animation: openprofile 0.5s;
+    transition: 1s;
+    box-shadow: 0 7px 41px 2px violet;
+}
+
+.wrapper_profile .left {
+    width: 100%;
+    background: linear-gradient(to right, #01a9ac, #01dbdf);
+    padding: 30px 25px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+    color: #fff;
+    background: violet;
+}
+
+.wrapper_profile .right {
+    width: 100%;
+    background: #fff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 30px 25px;
+}
+
+.wrapper_profile .left .img-profile {
+    width: 70%;
+    /* border: 5px solid #353c4e; */
+    margin: 20px auto;
+    border-radius: 2%;
+    overflow: hidden;
+    transition: 1s ease-in-out;
+    box-shadow: 0 0px 10px 0px #353c4e;
+    position: relative;
+}
+
+.change_img_profile {
+    margin-top: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 30px;
+    /* margin-right: 10px; */
+    cursor: pointer;
+    background: #01b0b4;
+    padding: 0 10px;
+    border-top-left-radius: 10px;
+    background: violet;
+}
+
+form#uploadIMGUSer {
+    display: none;
+}
+
+.wrapper_profile .right .info_data, .wrapper_profile .right .projects_data {
+    display: flex;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+}
+.wrapper_profile .right .info_data .data, .wrapper_profile .right .projects_data .data {
+    width: 45%;
+    flex-wrap: wrap;
+}
+.wrapper_profile .right .info_data .data p, .wrapper_profile .right .projects_data .data p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #919aa3;
+}
+.wrapper_profile .info_data .data p input, .codeEmail input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid;
+    outline: none;
+}
+.btnChangePassword {
+    width: max-content;
+    height: max-content;
+    background: linear-gradient(to right, #01a9ac, #01dbdf);
+    margin-right: 10px;
+    border-radius: 5px;
+    line-height: 45px;
+    text-align: center;
+    padding: 0px 10px;
+    color: white;
+    cursor: pointer;
+    background: violet;
+}
+.container_option_profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wrapper_profile .right .close-profile {
+    text-align: right;
+}
+.wrapper_profile .social_media ul {
+    display: flex;
+}
+.wrapper_profile .social_media ul li {
+    width: max-content;
+    height: max-content;
+    background: linear-gradient(to right, #01a9ac, #01dbdf);
+    margin-right: 10px;
+    border-radius: 5px
+px;
+    line-height: 45px;
+    text-align: center;
+    padding: 0px 10px;
+    /* vertical-align: bottom; */
+    background: violet;
+}
+.wrapper_profile .social_media ul li a {
+    color: #fff;
+    display: block;
+    font-size: 20px;
+    /* margin: 6px auto; */
+    /* vertical-align: bottom; */
+    text-decoration: none;
+}
+.wrapper_profile .right .close-profile button {
+    width: 70px;
+    height: 40px;
+    border: 3px solid #01a9ac;
+    border-radius: 5px;
+    color: #01a9ac;
+    font-size: 15px;
+    background-color: #fff;
+    transition: 0.5s ease-in-out;
+    box-sizing: border-box;
+}
+.wrapper_profile .right .close-profile button {
+    width: 70px;
+    height: 40px;
+    border: 3px solid #01a9ac;
+    border-radius: 5px;
+    color: #01a9ac;
+    font-size: 15px;
+    background-color: #fff;
+    transition: 0.5s ease-in-out;
+    box-sizing: border-box;
+    border: 3px solid violet;
+    color: violet;
+}
+.wrapper_profile .left h4 input {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: white;
+    outline: navajowhite;
+    text-align: center;
+    border: none;
+    border-bottom: 3px solid;
+    /* box-shadow: 0px 0px 20px grey; */
+    border-radius: 4px;
+    background: transparent;
+}
+@media (max-width: 1080px)
+{
+    .wrapper_profile {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow-y: scroll;
+        width: 90%;
+        /* height: 90vh; */
+        position: relative;
+    }
+    .wrapper_profile .left {
+        width: 100%;
+        height: max-content;
+    }
+    .wrapper_profile .right {
+        width: 100%;
+    }
+}
+
+.field-ipt-CodeEmail input {
+    border: 1px solid #c6c6c6;
+    outline: none;
+    border-radius: 4px;
+    height: 36px;
+    padding: 10px;
+    display: none;
+}
+.field-ipt-CodeEmail input.active {
+
+    display: block;
+}

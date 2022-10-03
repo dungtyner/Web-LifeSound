@@ -1,0 +1,281 @@
+@import url("./profileAccount.css");
+@import url("./carts/cart.css");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* font-family: 'Roboto', sans-serif; */
+}
+ul {
+    list-style: none;
+    margin-top: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #8232b4;
+}
+
+.wrapper_login, .wrapper_signup,.wrapper_forgetPass,.wrapper_changePass {
+    background: white;
+    /* width: 100%; */
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -9px rgba(0, 0, 0, 0.75);
+    display: flex;
+    height: max-content;
+}
+
+.wrapper_login img,.wrapper_signup img {
+    display: none;
+}
+
+/* image content */
+.wrapper_profile .left .img-profile img {
+    /* margin: 70px; */
+    width: 100%;
+    /* border: 5px solid #353c4e; */
+    box-sizing: border-box;
+    /* margin-bottom: 10px; */
+    border-radius: 5px;
+    box-shadow: 0 10px 20px 0px #353c4e;
+    /* overflow: hidden; */
+    transition: 0.5s ease-in-out;
+}
+
+.section__form  {
+    padding: 25px 30px;
+    float: right;
+    height: 100%;
+
+}
+
+.section__form  h1 {
+    font-size: 40px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.section__form  form {
+    margin: 20px 0;
+
+}
+
+/* first and last name */
+.section__form  form .name-details {
+    display: flex;
+}
+
+.section__form  .name-details .field:first-child {
+    margin-right: 10px;
+}
+
+.section__form  .name-details .field:last-child {
+    margin-left: 10px;
+}
+
+
+.section__form form .field {
+    display: flex;
+    margin-bottom: 25px;
+    flex-direction: column;
+    position: relative;
+}
+
+.section__form form .input__text input {
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.input__text .has-err { color: red;}
+.section__form form .field input {
+    outline: none;
+}
+
+/* Check box male or female */
+.section__form .checkbox {
+    display: flex;
+    margin-bottom: 25px;
+    font-size: 20px;
+
+}
+
+.section__form .checkbox input {
+    margin-right: 20px;
+}
+
+.section__form .checkbox p {
+    margin-right: 20px;
+}
+
+/* birthday day/month/year */
+.section__form  .date {
+    display: flex;
+}
+
+.section__form  .date p {
+    font-size: 20px;
+}
+.section__form .date select {
+    padding: 5px;
+    margin-left: 20px;
+    margin-bottom: 25px;
+}
+
+/* Button */
+.section__form .button {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.section__form form .button input {
+    height: 45px;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    background: #8232b4;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 13px;
+    
+}
+.section__form form .btn__show__password{
+    position: absolute;
+    right: 15px;
+    top: 17%;
+    border: none;
+    background-color: #fff;
+ 
+   
+}
+.section__form form .btn__show__password i {
+    
+    color: #ccc;
+    cursor: pointer;
+    /* transform: translateY(-50%); */
+}
+
+/* format link */
+.section__form .link {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 17px;
+}
+
+.section__form .link a {
+    color: #333;
+}
+
+.section__form .link a:hover {
+    text-decoration: underline;
+    color: #8232b4;
+}
+
+.show__note {
+    color: red;
+    background-color: rgb(185, 233, 159);
+    border-radius: 10px;
+    padding-left: 10px;
+    height: 25px;
+    display: none;
+}
+
+.containerPopup {
+    position: fixed;
+    z-index: 12;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%) scaleX(0);
+    visibility: hidden;
+    transition: .35s;
+    background: #0000004f;
+}
+.containerPopup.active
+{
+    transform: translateX(0) scaleX(1);
+    visibility: visible;
+}
+
+.btn_close_containerPopup {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    background: white;
+    height: max-content;
+    cursor: pointer;
+    color: #8232b4;
+    height: max-content;
+    width: max-content;
+    display: flex;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.btn_close_containerPopup i::before {
+    /* background: #8232b4; */
+    /* padding: 0; */
+    /* margin: 0; */
+}
+
+.btn_close_containerPopup i::after {
+    background: #8232b4;
+    padding: 0;
+    margin: 0;
+    height: max-content;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Profile OLD*/
