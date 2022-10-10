@@ -250,7 +250,7 @@
         </div>
 
         <!-- Header begin -->
-        <div class="header">
+        <div class="header" id="header">
             <div class="header__left">
                 <div class="nav_responsive">
                     <div class="icon-menu-more">
@@ -328,7 +328,8 @@
                                     <p class="subnav-item-info-img">Portable Amps <br> &DACs</p>
                                 </a>
                             </li>
-                            <li class="subnav__item"><a href="#">
+                            <li class="subnav__item">
+                                <a href="#">
                                     <img src="./images/svg/svgexport-10.svg" alt="">
                                     <p class="subnav-item-info-img">Desktop Amps & <br> DACs</p>
                                 </a>
@@ -372,7 +373,8 @@
                             <li class="subnav__item">
                                 <a href="#">
                                     <img src="./images/svg/svgexport-17.svg" alt="">
-                                    <p class="subnav-item-info-img""> Cases</p></a>
+                                    <p class="subnav-item-info-img""> Cases</p>
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -419,19 +421,25 @@
                             <li class="nav__item nav-item-menu">
                                 <a href="#">Price</a>
                             </li>
-                            <li class="nav__item nav-item-menu">
-                                <a href="#">Deals</a>
+                            <li class="nav__item ">
+                                <div class="nav__deals nav-item-menu">
+                                    <a href="#">Deals</a>
+                                </div>
+                                <ul class="subnav deals-list-item">
+                                    <li class="subnav__item"><a href="#">Unboxed</a></li>
+                                    <li class="subnav__item"><a href="#">Pre-Owned</a></li>
+                                    <li class="subnav__item"><a href="#">Demo Unit</a></li>
+                                    <li class="subnav__item"><a href="#">Deals of the month</a></li>
+                                    <li class="subnav__item"><a href="#">Clearance</a></li>
+                                </ul>
                             </li>
                             <li class="nav__item nav-item-menu">
                                 <a href="#">Forum</a>
                             </li>
                             <li class="nav__item nav-item-menu">
-                                <a href="views/developer.html">Developer</a>
+                                <a href="./views/developer.html">Developer</a>
                             </li>
                         </ul>
-
-
-
             </div>
 
             <div class="header__right">
@@ -440,9 +448,6 @@
                 </ul>
                 <ul class="header__linklist">
                     <a href="views/login.php">Account</a>
-                    <!-- <li class="menu_login"><a href="views/login.php">Đăng nhập</a></li> -->
-                    <!-- <li class="menu_login"><a href="#">Đăng ký</a></li>
-                    <li class="menu_login"><a href="#">Đăng xuất</a></li> -->
                 </ul>
                 <ul class="header__linklist">
                     <a href="#" class="click-form-cart">Cart
@@ -451,14 +456,8 @@
 
                 </ul>
             </div>
-
-            <!-- Header end -->
-
-
-
-
-
         </div>
+        <!-- Header end -->
         <!-- CONTENT -->
         <div class="content-life-sound">
             <div class="left-content-title">
@@ -491,7 +490,6 @@
             </div>
         </div>
         <!-- END CONTENT -->
-
 
 </body>
 

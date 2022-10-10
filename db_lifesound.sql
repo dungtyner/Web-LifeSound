@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 21, 2022 lúc 03:39 PM
+-- Thời gian đã tạo: Th9 29, 2022 lúc 04:56 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 7.4.29
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `life_sound`
+-- Cơ sở dữ liệu: `db_lifesound`
 --
 
 -- --------------------------------------------------------
@@ -47,6 +47,27 @@ CREATE TABLE `nguoidung` (
 
 INSERT INTO `nguoidung` (`MaND`, `Ho`, `Ten`, `GioiTinh`, `SDT`, `Email`, `DiaChi`, `TaiKhoan`, `MatKhau`, `MaQuyen`, `TrangThai`) VALUES
 (2, 'Đặng', 'Nhật', '', '0382777456', 'nhatdnm.21it@vku.udn.vn', '', 'manhnhat', '$2y$10$KiC7FeXO5LnLIZqsk2UZReTqkTyGCGX8K3C.p4nVwGzB.sLCd6BBO', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `phanquyen`
+--
+
+CREATE TABLE `phanquyen` (
+  `MaQuyen` int(11) NOT NULL,
+  `TenQuyen` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `ChiTietQuyen` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Đang đổ dữ liệu cho bảng `phanquyen`
+--
+
+INSERT INTO `phanquyen` (`MaQuyen`, `TenQuyen`, `ChiTietQuyen`) VALUES
+(1, 'Customer', 'Khách hàng có tài khoản'),
+(2, 'Admin', 'Quản trị viên'),
+(3, 'Personnel', 'Nhân Viên');
 
 --
 -- Chỉ mục cho các bảng đã đổ

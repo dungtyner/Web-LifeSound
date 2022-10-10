@@ -14,7 +14,6 @@
     /* background-color: aqua; */
     background-image: url('https://wallpaperaccess.com/full/1910715.jpg');
     background-size: 100% 100%;
-
     overflow: hidden;
 
 }
@@ -24,18 +23,16 @@
     padding-right: 35px;
     display: flex;
     justify-content: space-between;
-    position: sticky;
+    position: fixed;
     top: 0;
-    
     /* background-color: rgb(237, 237, 237); */
     background: transparent;
-   
     box-shadow: 0 8px 8px -9px rgba(0, 0, 0, 0.75);
-
-
-    position: relative;
+    width: 100%;
     font-family: sans-serif;
     /* font-family: monospace; */
+    background-color: rgb(237, 237, 237);
+    z-index: 10000;
 
 }
 
@@ -149,6 +146,7 @@
     font-size: 15px;
 }
 
+
 #nav .nav__item .nav__categories {
     /* padding: 13px 0px; */
     align-items: center;
@@ -160,7 +158,7 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-column-gap: 8px;
-    grid-row-gap: 10px;
+
     width: 100%;
     
 }
