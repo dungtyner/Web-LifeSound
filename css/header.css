@@ -9,14 +9,20 @@
 .root {
 
     /* display: flex; */
+
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    /* height: max-content; */
+
     /* background-color: aqua; */
+
     background-image: url('https://wallpaperaccess.com/full/1910715.jpg');
+
     background-size: 100% 100%;
 
-    overflow: hidden;
+    /* min-height: 100vh; */
 
+    overflow: hidden;
 }
 
 .header {
@@ -26,15 +32,14 @@
     position: sticky;
     top: 0;
     /* background-color: rgb(237, 237, 237); */
-    background: transparent;
+    background: white;
     z-index: 100;
     box-shadow: 0 8px 8px -9px rgba(0, 0, 0, 0.75);
-
-
-    position: relative;
+    position: fixed;
     font-family: sans-serif;
     /* font-family: monospace; */
-
+    right: 0;
+    left: 0;
 }
 ul {
     margin-bottom: 0px !important;
@@ -233,10 +238,9 @@ ul {
 
 
 .header-show-responsive {
-    position: absolute;
+    position: fixed;
     width: 100%;
     /* margin-left: 20px; */
-    
     height: calc(100% - 90px);
     background-color: rgb(254, 240, 254);
     top: 90px;
@@ -247,7 +251,6 @@ ul {
     flex-direction: column;
     overflow: hidden;
     border-radius: 0px 0px 30px 30px;
-
     box-shadow: rgba(225, 61, 170, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     animation: displayDown ease-in 0.5s;
 }
@@ -675,13 +678,13 @@ to {
 
 .content-life-sound {
     width: 100%;
-    height: calc(100% - 94.4px);
-
+    height: calc(100vh - 94.4px);
     /* background-color: rgba(102, 51, 153, 0.642); */
-
     display: flex;
-
     overflow: scroll;
+    
+
+    margin-top: 94.4px;
 }
 
 .content-life-sound::-webkit-scrollbar {
@@ -797,12 +800,12 @@ to {
 
 
     .header-show-responsive {
-        position: absolute;
+        position: fixed;
         width: 100%;
         /* margin-left: 20px; */
         top: 80px;
         height: calc(100% - 80px);
-
+        /* z-index: 251; */
     }
 
     .search-content-data .product-search-content-data .sub-product-display  {
@@ -823,6 +826,11 @@ to {
 
     .cart-content-data .header-cart-content-data  .close-content-data {
         width: 30%;
+    }
+
+    .content-life-sound { 
+        height: calc(100vh - 80px);
+        /* margin-top: 0px !important; */
     }
    
 }

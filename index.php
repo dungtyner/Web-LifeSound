@@ -14,26 +14,27 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- BOOTSTRAP -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        
+        
+        
+        <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+        <link rel="stylesheet" href="css/header.css">
+        
+        <?php 
 
-
-
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <link rel="stylesheet" href="css/header.css">
-
-    <?php 
-
-    if(isset($_REQUEST['page'])) 
+if(isset($_REQUEST['page'])) 
     {
     
-
+        
         
         $numPage = $_REQUEST['page'];
         switch($numPage)
-            {
-                case 1: 
-                    echo '<link rel="stylesheet" href="css/celearangce.css">';
+        {
+            case 1: 
+                echo '
+                        
+                        <link rel="stylesheet" href="css/celearangce.css">
+                    ';
                     break;
                 case 2:
                     echo '<link rel="stylesheet" href="css/categories.css">';
@@ -45,7 +46,19 @@
     
                     break;
                 case 5: 
-                    echo '<link rel="stylesheet" href="css/payment.css">';
+                    $subpage = $_REQUEST['subpage'];
+                    if($subpage == 51) 
+                    {
+                        echo '<link rel="stylesheet" href="css/payment.css">';
+                    }
+                    else if($subpage == 52)
+                    {
+                        echo '<link rel="stylesheet" href="css/orderInformation.css">';
+                    }
+                    else if($subpage == 53)
+                    {
+                        echo '<link rel="stylesheet" href="css/orderDetail.css">';
+                    }
                     break;
                 case 6:
                     echo '<link rel="stylesheet" href="css/forum.css">';
@@ -361,12 +374,12 @@
                     </li>
                     <li class="nav__item">
                         <div class="nav_payment">
-                            <a href="index.php?page=5">Payment</a>
+                            <a href="#">Payment</a>
                         </div>
                         <ul class="subnav">
-                            <li class="subnav__item"><a href="#">PAYMENT</a></li>
-                            <li class="subnav__item"><a href="#">ORDER INFORMATING</a></li>
-                            <li class="subnav__item"><a href="#">ORDER DETAILS</a></li>
+                            <li class="subnav__item"><a href="index.php?page=5&subpage=51">PAYMENT</a></li>
+                            <li class="subnav__item"><a href="index.php?page=5&subpage=52">ORDER INFORMATING</a></li>
+                            <li class="subnav__item"><a href="index.php?page=5&subpage=53">ORDER DETAILS</a></li>
                         </ul>
                     </li>
                     <li class="nav__item">
@@ -426,7 +439,21 @@
 
                         break;
                     case 5: 
-                        $page = include 'php/indexPayment.php';
+
+                        $subpage = $_REQUEST['subpage'];
+                            if($subpage == 51) 
+                            {
+                                $page = include 'php/indexPayment.php';
+                            }
+                            else if($subpage == 52)
+                            {
+                                $page = include 'php/indexOrderInformation.php';
+                            }
+                            else if($subpage == 53)
+                            {
+                                $page = include 'php/indexOrderDetail.php';
+                            }
+
                         break;
 
                     case 6: 
@@ -481,7 +508,23 @@
 
                         break;
                     case 5: 
-
+                        $subpage = $_REQUEST['subpage'];
+                        if($subpage == 51) 
+                        {
+                            
+                        }
+                        else if($subpage == 52)
+                        {
+                            echo '
+                                <script src="js/orderInformation.js"></script>
+                            ';
+                        }
+                        else if($subpage == 53)
+                        {
+                            echo '
+                            <script src="js/orderDetail.js"></script>
+                            ';
+                        }
                         break;
 
                     case 6: 
