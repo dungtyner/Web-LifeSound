@@ -1,0 +1,5 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" focusable="false" width="16" height="16" class="icon icon--filters   " viewBox="0 0 16 16">
+        <path d="M0 4h16M0 12h16" fill="none" stroke="#444444" stroke-width=""></path>
+        <circle cx="5" cy="4" r="2" fill="#FFFFFF" stroke="#444444" stroke-width="2px"></circle>
+        <circle cx="11" cy="12" r="2" fill="#FFFFFF" stroke="#444444" stroke-width="2px"></circle>
+      </svg>

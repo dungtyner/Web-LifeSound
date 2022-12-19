@@ -1,0 +1,120 @@
+.container.text-center::-webkit-scrollbar {
+    display: none;
+}
+
+.container.text-center {
+    background-color: white;
+    height: 100%;
+    overflow: scroll;
+}
+
+.row.rowmain {
+    margin: 20px 0px 10px 0px;
+}
+
+.row.rowmain.first-border {
+    margin-top: 50px;
+   
+}
+
+.row.rowmain .collapse {
+    border-bottom: 2px solid black;
+}
+
+.col.informationorder {
+    background-color: rgb(212, 213, 213);
+    margin: 10px 10px;
+    text-align: calc(100% - 10px);
+}
+
+.border-collapse {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+}
+
+#offcollapsehehe {
+    display: none;
+}
+
+
+.border_rowmain {
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+.col-4 {
+    display: flex;
+}
+
+/* CSS */
+.button-85 {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-85:before {
+    content: "";
+    background: linear-gradient(45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.button-85:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}

@@ -1,0 +1,13 @@
+.prod-subnav-list.price-range {
+    margin: 0;
+}
+
+.container.container-content_deal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row.product-list {
+    justify-content: center;
+    width: 100%;
+}

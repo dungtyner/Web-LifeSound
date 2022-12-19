@@ -1,0 +1,59 @@
+.sidebar-profile {
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    padding: 20px;
+}
+
+.header-sidebar_profile {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+img.Avatar-header__sidebar_profile {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.textNameUser-header__sidebar_profile {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.btnSetting-header__sidebar_profile {
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: pink;
+    cursor: pointer;
+}
+
+.sectionBtnSetting-header__sidebar_profile {
+    position: absolute;
+    right: 5px;
+}
+
+.sectionNameUser-header__sidebar_profile {
+    margin-left: 20px;
+}
+
+.itemTabMenu-content__sidebar_profile {
+    display: flex;
+    padding: 10px 10px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 6px 1px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.btn-itemTabMenu__content__sidebar_profile {
+    margin-right: 20px;
+}
+.itemTabMenu-content__sidebar_profile.active
+{
+    background: white;
+}
