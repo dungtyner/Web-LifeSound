@@ -9,6 +9,9 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\LocalAccountController;
 use Illuminate\Http\Request ;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use stdClass;
+
 // use Illuminate\Support\Facades\Mail;
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -155,7 +158,7 @@ class AccountController extends Controller{
 
 
             // dd($avt_url);
-            return response()->json(['account'=>isset($_SESSION['id_loginEd']), 'avt_url' => json_decode($avt_url), 'name_customer' => $name_customer]);
+            return response()->json(['account'=>isset($_SESSION['id_loginEd']), 'id_account'=>$_SESSION['id_loginEd'], 'avt_url' => json_decode($avt_url), 'name_customer' => $name_customer]);
         }
         return response()->json(['account'=>isset($_SESSION['id_loginEd']),'avt_url' => '', 'name_customer' => '']);
     }
@@ -264,6 +267,98 @@ class AccountController extends Controller{
             $message->setBody( 'Code : '.$_SESSION['code']);
         });
         return response()->json(['Restore Password']);
+    }
+
+
+
+
+
+
+
+
+
+    function uploadFileChat(Request $request) {
+        $inforLogin = $_SESSION['id_loginEd'];
+        if($inforLogin){
+
+            $mess_text = $request->mess_text;
+            $mess_image = [];
+            foreach($request->allFiles('mess_image') as $file) {
+                $mess_image[count($mess_image)] = $file;
+            }
+            // dd($mess_image);
+
+            $mess_image_for = [];
+            foreach($mess_image as $sub_mess_image) {
+                if($sub_mess_image) {
+                    $getNameFileImage = $sub_mess_image->getClientOriginalName();
+                    $nameFile_ = current(explode('.',$getNameFileImage));
+                    $nameFile = explode('_',$nameFile_)[0];
+                    if($nameFile == 'mess') {
+                        $get_name_image = $sub_mess_image->getClientOriginalName();
+                        $name_image = current(explode('.',$get_name_image));
+                        $new_image = $name_image.rand(0,99).'.'.$sub_mess_image->getClientOriginalExtension();
+                        $sub_mess_image->move('upload/Mess/',$new_image);
+                        $new_link_image = '/upload/Mess/'.$new_image;
+                        $mess_image_for[count($mess_image_for)] = $new_link_image;
+                        $mess_image_data = $new_link_image;
+                        $insertImage = DB::table('message')->insert([
+                            'id_send' => $inforLogin,
+                            'id_receive' => 0,
+                            'mess_image' => $mess_image_data,
+                        ]);
+                    } 
+                }
+            }
+
+            if($mess_text != '') {
+                $insertText = DB::table('message')->insert([
+                    'id_send' => $inforLogin,
+                    'id_receive' => 0,
+                    'mess_text' => $mess_text,
+                ]);
+            }
+
+            $dataMess = new stdClass();
+            $dataMess->mess_image = $mess_image_for;
+            $dataMess->mess_text = $mess_text;
+
+
+            return response()->json($dataMess);
+        }else{
+            return Redirect::to('/');
+        }
+    }
+
+    function loadChat() {
+        $inforLogin = isset($_SESSION['id_loginEd']);
+        if($inforLogin){
+
+            $resultData = DB::table('message')
+            ->where(['id_send' => $_SESSION['id_loginEd'], 'id_receive' => '0'])
+            ->orWhere(function($query) 
+            {
+                $query->where("id_send", '0')
+                    ->where("id_receive", $_SESSION['id_loginEd']);
+            })
+            // ->orWhere(['id_send' => '0', 'id_receive' => $_SESSION['id_loginEd']])
+            ->get(
+                array(
+                    'id_mess',
+                    'id_send',
+                    'id_receive',
+                    'mess_text',
+                    'mess_image',
+                    'mess_time'
+                    )
+            );
+            // dd($resultData);
+
+
+            return response()->json($resultData);
+        }else{
+            return Redirect::to('/');
+        }
     }
 }
 

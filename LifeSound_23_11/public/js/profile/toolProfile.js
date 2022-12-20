@@ -1,3 +1,9 @@
+import {socket} from '../header.js';
+// import toolAccount from '../accounts/toolAccount.js';
+
+
+
+var valueMess = new ValueMess({});
 console.log("Using toolProfile.js");
 import * as toolCommon from "../toolCommon/toolCommon.js";
 import * as toolAccount from "../accounts/toolAccount.js";
@@ -61,6 +67,7 @@ render_sidebarProfileAccount(
                                             }
                                         );
                                     } else if (data_idTab === "1") {
+
                                         render_ContentBodyProfileAccount_Chat(
                                             body_profile.querySelector(
                                                 ".content-body_profile"
@@ -315,86 +322,71 @@ function render_ContentBodyProfileAccount_InfoBasic(el_parent, data) {
 }
 var files_mess = [];
 function render_ContentBodyProfileAccount_Chat(el_parent) {
+
     sessionStorage.setItem("messFiles", []);
     el_parent.innerHTML = `
-    <div class='body-chatShop'>
-    <div class='header-chatShop'>
-        <div class='Left_header-chatShop'>
-        <div class='avatar-chatShop'>
-        <img src='https://condaluna.com/assets/stickers/music-headphones.gif' alt='' />
-        </div>
-        <div class='name-chatShop'>
-        Life Sound
-        </div>
-        </div>
-        <div class='Right_header-chatShop'>
-        <div class='btnInfo-chatShop'>
-        <i class="fa-solid fa-info"></i>
-        </div>
-        </div>
-    </div>
-    <div class='content-chatShop'>
-    <div class='sessionMessage-chatShop '>
-        <div class='message-chatShop'>
-            ABC
-        </div>
-        </div>
+        <div class='body-chatShop'>
+            <div class='header-chatShop'>
+                <div class='Left_header-chatShop'>
+                    <div class='avatar-chatShop'>
+                        <img src='https://condaluna.com/assets/stickers/music-headphones.gif' alt='' />
+                    </div>
+                    <div class='name-chatShop'>
+                        Life Sound
+                    </div>
+                </div>
+                <div class='Right_header-chatShop'>
+                    <div class='btnInfo-chatShop'>
+                        <i class="fa-solid fa-info"></i>
+                    </div>
+                </div>
+            </div>
+            <div class='content-chatShop'>
 
-        <div class='sessionMessage-chatShop '>
-            <div class='message-chatShop'>
-                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzrNgiCXPAOnmN6LxhOHdpscGpIqiPbnQnqw&usqp=CAU' alt='' />
+            </div>
+            <div class='footer-chatShop'>
+                <div class='btnDown-chatShop'>
+                    <i class="fa-solid fa-circle-arrow-down"></i>
+                </div>
+                <div class='previewFiles-chatShop'>
+                    <div class='btnAddFiles-chatShop'>
+                        <i class="fa-solid fa-folder-plus"></i>
+                    </div>
+                    <div class='listFile-choose-chatShop'>
+
+
+                    </div>
+                </div>
+                <div class='formMessage-chatShop'>
+
+                    <div class='left-formMessage-chatShop'>
+                        <div class='sectionFile-formMessage-chatShop'>
+                            <div class='btnFile-formMessage-chatShop'>
+                                <i class="fa-solid fa-file"></i>
+                            </div>
+                            <input class='iptFile-formMessage-chatShop' style='display:none' type='file' />
+                        </div>
+                    </div>
+                    <div class='center-formMessage-chatShop'>
+                        <div class='sectionText-formMessage-chatShop'>
+                            <input class='iptText-formMessage-chatShop' type='text' />
+
+                        </div>
+                    </div>
+                    <div class='right-formMessage-chatShop'>
+                        <div class='btnSubmit-formMessage-chatShop'>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class='sessionMessage-chatShop isMe'>
-            <div class='message-chatShop isMe'>
-                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzrNgiCXPAOnmN6LxhOHdpscGpIqiPbnQnqw&usqp=CAU' alt='' />
-            </div>
-        </div>
-        <div class='sessionMessage-chatShop isMe'>
-            <div class='message-chatShop isMe'>
-                <video src='https://cdn.videvo.net/videvo_files/video/premium/video0166/large_watermarked/Canada%20Nova%20Scotia%20rusted%20chain%20links%20on%20ground%20pan_preview.mp4' controls />
-            </div>
-        </div>
-    </div>
-    <div class='footer-chatShop'>
-    <div class='btnDown-chatShop'>
-    <i class="fa-solid fa-circle-arrow-down"></i>
-    </div>
-    <div class='previewFiles-chatShop'>
-    <div class='btnAddFiles-chatShop'>
-    <i class="fa-solid fa-folder-plus"></i>
-    </div>
-        <div class='listFile-choose-chatShop'>
-
-
-        </div>
-    </div>
-    <div class='formMessage-chatShop'>
-    
-    <div class='left-formMessage-chatShop'>
-    <div class='sectionFile-formMessage-chatShop'>
-    <div class='btnFile-formMessage-chatShop'>
-    <i class="fa-solid fa-file"></i>
-    </div>
-        <input class='iptFile-formMessage-chatShop' style='display:none' type='file'/>
-    </div>
-    </div>
-    <div class='center-formMessage-chatShop'>
-    <div class='sectionText-formMessage-chatShop'>  
-    <input  class='iptText-formMessage-chatShop' type='text'/>
-        
-    </div>
-    </div>
-    <div class='right-formMessage-chatShop'>
-    <div class='btnSubmit-formMessage-chatShop'>
-    <i class="fa-solid fa-paper-plane"></i>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
     `;
+
+    
+
+
+
     var iptFile = el_parent.querySelector(".iptFile-formMessage-chatShop");
     var iptText = el_parent.querySelector(".iptText-formMessage-chatShop");
     var btnSubmit = el_parent.querySelector(".btnSubmit-formMessage-chatShop");
@@ -403,6 +395,43 @@ function render_ContentBodyProfileAccount_Chat(el_parent) {
             request_submitFormChat(el_parent);
         }
     });
+    // lấy socket để truyền dữ liệu
+    socket.on('Admin đã gửi tin nhắn', data => {
+        render_A_Mess(data.value_mess,el_parent.querySelector(".body-chatShop"),false )
+    });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url:  '/account/load-chat',
+        method: 'get',
+        data: '',
+        contentType: false,
+        processData: false,
+        dataType: 'json',
+        success: function(data) {
+    
+            console.log(data);
+            data.forEach(element => {
+                if(element.id_send != 0) {
+                    render_A_Mess( new ValueMess({text: element.mess_text?element.mess_text:'', image: element.mess_image?[element.mess_image]:[] }), el_parent.querySelector(".body-chatShop"), true);
+                } else {
+                    render_A_Mess( new ValueMess({text: element.mess_text?element.mess_text:'', image: element.mess_image?[element.mess_image]:[] }), el_parent.querySelector(".body-chatShop"), false);
+                    
+                }
+                var content_chatShop = el_parent.querySelector(".content-chatShop"); 
+                content_chatShop.scrollTo(0, content_chatShop.scrollHeight);
+            });
+        },
+        error: function() {
+            console.log('load k được');
+        }
+    }); 
+
+
+
     iptText.addEventListener("keyup", (event) => {
         if (event.keyCode == 13) {
             request_submitFormChat(el_parent);
@@ -464,7 +493,7 @@ function render_ContentBodyProfileAccount_Chat(el_parent) {
                 .classList.remove("showNow");
         }
     });
-
+    content_chatShop.scrollTo(0, content_chatShop.scrollHeight);
     el_parent
         .querySelector(".btnDown-chatShop")
         .addEventListener("click", () => {
@@ -474,8 +503,53 @@ function render_ContentBodyProfileAccount_Chat(el_parent) {
 }
 function request_submitFormChat(el_parent) {
     valueMess.text = getIptTextFormChat(el_parent);
-    render_A_Mess(valueMess, el_parent.querySelector(".body-chatShop"), true);
+    
+
+    // console.log('line 506: ', valueMess.image);
+
+    let listFileMess = [];
+    let count = 0;
+    for(let fileD of valueMess.image) {
+        listFileMess[listFileMess.length] = new File([fileD],`mess_file${count+1}${fileD.name}`,{
+            type:fileD.type,lastModified:fileD.lastModified});
+            count = count + 1;
+    }
+
+    var form  = new FormData();
+    form.append('mess_text', valueMess.text);
+    for(let i = 0; i < listFileMess.length; i++) {
+        form.append('mess_image'+i.toString(), listFileMess[i]);
+    }
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url:  '/account/upload-file-chat',
+        method: 'post',
+        data: form,
+        contentType: false,
+        processData: false,
+        dataType: 'json',
+        success: function(data) {
+    
+            let valMss = new ValueMess({text: data.mess_text, image: data.mess_image?data.mess_image:[] });
+            render_A_Mess(valMss , el_parent.querySelector(".body-chatShop"), true);
+            socket.emit('Khách hàng gửi tin nhắn', {data_account: toolAccount.data_account, value_mess: valMss});
+        },
+        error: function() {
+            console.log('load k được');
+        }
+    }); 
+
+    resetFromChat(el_parent.querySelector('.body-chatShop .footer-chatShop'));
 }
+export {ValueMess} ;
+
+
+
 function ValueMess({ text = "", video = [], image = [] }) {
     this.image = image;
     this.video = video;
@@ -495,6 +569,7 @@ function loadReviewFileChatShop(elFileChatShop, dataFiles) {
     );
     elFileChatShop.querySelector(".listFile-choose-chatShop").innerHTML = ``;
     if (dataFiles.length > 0) {
+        // console.log('?????');
         elFileChatShop.classList.add("showNow");
 
         // elFileChatShop.querySelector('.btnAddFiles-chatShop').style.display='flex';
@@ -504,7 +579,7 @@ function loadReviewFileChatShop(elFileChatShop, dataFiles) {
             .querySelector(".btnFile-formMessage-chatShop").style.display =
             "none";
 
-        valueMess = new ValueMess({});
+        // valueMess = new ValueMess({});
         elFileChatShop.querySelector(".listFile-choose-chatShop").innerHTML =
             dataFiles
                 .map((el, idx) => {
@@ -530,24 +605,31 @@ function loadReviewFileChatShop(elFileChatShop, dataFiles) {
             });
         });
     } else {
+     valueMess = new ValueMess({image:[]});
         elFileChatShop.classList.remove("showNow");
         elFileChatShop
-            .closest(".footer-chatShop")
-            .querySelector(".btnFile-formMessage-chatShop").style.display =
-            "block";
+        .closest(".footer-chatShop")
+        .querySelector(".btnFile-formMessage-chatShop").style.display =
+        "block";
         elFileChatShop
+        .closest(".footer-chatShop")
+        .querySelector(".iptFile-formMessage-chatShop").value = '';
+        elFileChatShop
+        .closest(".footer-chatShop")
+        .querySelector(".iptFile-formMessage-chatShop").files=null;
+        console.log(elFileChatShop
             .closest(".footer-chatShop")
-            .querySelector(".iptFile-formMessage-chatShop").value = "";
+            .querySelector(".iptFile-formMessage-chatShop").files,valueMess);
     }
 }
-var valueMess = new ValueMess({});
+
 function render_reviewFileChatShop(dataFile, idx) {
     switch (dataFile.type.split("/")[0]) {
         case "image":
             valueMess.image.push(dataFile);
             console.group("ren");
-            console.log(dataFile);
-            console.log(valueMess);
+            // console.log(dataFile);
+            // console.log(valueMess);
             console.groupEnd("ren");
             return `
             <div class='File-choose-chatShop' data-idx='${idx}'>
@@ -594,7 +676,7 @@ function render_A_Mess(valueMess, el_parent, isMe) {
                 ${el[1].map(elm=>{
                     return `
                     <div class="message-chatShop ${isMe ? "isMe" : ""}">
-                    <img src="${URL.createObjectURL(elm)}" alt="">
+                    <img src="${elm}" alt="">
                 </div>
                     `
                 })}
@@ -607,7 +689,7 @@ function render_A_Mess(valueMess, el_parent, isMe) {
                     el[1].map(elm=>{
                         return `
                         <div class="message-chatShop ${isMe ? "isMe" : ""}">
-                        <video src="${URL.createObjectURL(elm)}" controls="">
+                        <video src="${elm}" controls="">
                     </video></div>
                         `
                     })
@@ -636,6 +718,7 @@ function render_A_Mess(valueMess, el_parent, isMe) {
 }
 function resetFromChat(el_parent)
 {
+    // console.log('reset');
     var iptText = el_parent.querySelector(".iptText-formMessage-chatShop");
     iptText.value=''
     files_mess=[]

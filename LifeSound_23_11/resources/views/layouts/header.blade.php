@@ -59,6 +59,7 @@
                     <!-- <li class="menu_login"><a href="views/login.php">Đăng nhập</a></li> -->
                     <!-- <li class="menu_login"><a href="#">Đăng ký</a></li>
                     <li class="menu_login"><a href="#">Đăng xuất</a></li> -->
+                    <span class="header__cart__count header_notification_mess" style="background: red; display: none;"></span>
                 </ul>
                 <ul class="header__linklist">
                     <a href="#" class="click-form-search"><i class="fa-solid fa-magnifying-glass" style="margin-right: 0.5rem"></i>Tìm kiếm</a>

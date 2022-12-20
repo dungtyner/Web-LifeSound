@@ -140,6 +140,10 @@ Route::prefix('account')->group(function(){
     Route::post('/changePass',[AccountController::class,'changePass']);
     Route::post('/updateInfoBasicAccount',[AccountController::class,'updateInfoBasicAccount']);
     Route::post('/updateAvatarAccount',[AccountController::class,'updateAvatarAccount']);
+
+
+    Route::post('/upload-file-chat', [AccountController::class, 'uploadFileChat']);
+    Route::get('/load-chat', [AccountController::class, 'loadChat']);
 });
 
 
@@ -245,7 +249,11 @@ Route::prefix('account')->group(function(){
 
         // admin chat 
     Route::group(array('prefix' => 'admin/chat'), function() {
-        Route::get('/show-chat', [ChatAdminController::class, 'showChat']);
+        Route::get('/show-chat/{id_send}', [ChatAdminController::class, 'showChat']);
+        
+        Route::post('/save-chat', [ChatAdminController::class, 'saveChat']);
+        Route::get('/load-chat/{id_send}', [ChatAdminController::class, 'loadChat']);
+        Route::get('/load-chat-notification', [ChatAdminController::class, 'loadChatNotification']);
     });
 
 

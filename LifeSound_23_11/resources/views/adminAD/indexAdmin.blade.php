@@ -16,6 +16,48 @@
         )    
     );
 
+    $dataMessTemp = DB::table('message')
+    ->where('id_send' , '<>', 0)
+    ->groupBy('id_send')
+    ->orderBy('id_mess', 'desc')
+    ->limit(3)
+    ->get('id_send');
+
+    $dataMess = [];
+    foreach ($dataMessTemp as $sub_dataMessTemp) {
+
+        $mess = DB::table('message')
+        ->where(['id_send' => $sub_dataMessTemp->id_send])
+        ->orderBy('id_mess', 'desc')
+        ->limit(1)
+        ->get('mess_text')[0]->mess_text;
+        if($mess != null || $mess != '') {
+            $sub_dataMessTemp->nameAccount = DB::table('accounts')
+            ->where(['id_account' => $sub_dataMessTemp->id_send])
+            ->get('fname')[0]->fname;
+            $sub_dataMessTemp->lastMess =  substr($mess, 0, 15).'...';
+    
+    
+            $dataMess[count($dataMess)] = $sub_dataMessTemp;
+        } else {
+            $sub_dataMessTemp->lastMess =  'Đã gửi 1 ảnh...';
+            $sub_dataMessTemp->nameAccount = DB::table('accounts')
+            ->where(['id_account' => $sub_dataMessTemp->id_send])
+            ->get('fname')[0]->fname;
+    
+    
+            $dataMess[count($dataMess)] = $sub_dataMessTemp;
+        }
+
+    }
+
+
+
+    // dd($dataMess);
+
+
+
+
 ?>
 
 
@@ -204,37 +246,27 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-fw fa-envelope"></i>
-                        <span class="indicator text-primary d-none d-lg-block">
-                            <i class="fa fa-fw fa-circle"  style="color: #bb60c7;"></i>
+                        <span class="indicator text-primary d-none d-lg-block display_notification_mess">
+                            <i class="fa fa-fw fa-circle status_mess"  style="display: none; color: #bb60c7;"></i>
                         </span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-                        <h6 class="dropdown-header">New Messages:</h6>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <strong>David Miller</strong>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty
-                                awesome! These messages clip off when they reach the end of the box so they don't
-                                overflow over to the sides!</div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <strong>Jane Smith</strong>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">I was wondering if you could meet for an
-                                appointment at 3:00 instead of 4:00. Thanks!</div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <strong>John Doe</strong>
-                            <span class="small float-right text-muted">11:21 AM</span>
-                            <div class="dropdown-message small">I've sent the final files over to you for review.
-                                When you're able to sign off of them let me know and we can discuss distribution.
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item small" href="#">View all messages</a>
+                    <div class="dropdown-menu" aria-labelledby="messagesDropdown" >
+                        <h6 class="dropdown-header">Tin Nhắn Mới:</h6>
+                        <div class="big_mess_notification">
+                            <div class="dropdown-divider"></div>
+                            @foreach ($dataMess as $subDataMess)
+                                <a class="dropdown-item" href="/admin/chat/show-chat/{{ $subDataMess->id_send }}" style="width: 350px;">
+                                    <strong>{{ $subDataMess->nameAccount }}</strong>
+                                    <span class="small float-right text-muted">11:21 AM</span>
+                                    <div class="dropdown-message small">
+                                        {{ $subDataMess->lastMess }}
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                            @endforeach
+                        </div>
+                            
+                        <a class="dropdown-item small before-see-all-mess" href="#">Xem tất cả tin nhắn</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -350,11 +382,19 @@
 </body>
 
 
+
+
+
+    {{-- connect socket --}}
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
+
+
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js'></script>
-    <script src="{{ asset('backend/js/adminAD.js') }}"></script>
+    <script type="module" src="{{ asset('backend/js/adminAD.js') }}"></script>
     {{-- <script src="{{ asset('backend/js/script.js') }}"></script> --}}
+
 
     <script>
 

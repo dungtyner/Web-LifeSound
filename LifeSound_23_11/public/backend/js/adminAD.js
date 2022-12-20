@@ -9,6 +9,103 @@ $("#sidenavToggler").click(function(e) {
 // pagination notification
 
 
+// proccess socket 
+const socket = io('http://localhost:2306',{ transports : ['websocket'] });
+export default socket;
+
+socket.on('Khách hàng đã gửi tin nhắn', data => {
+    console.log(data.data_account);
+    loadNotificationMessage( data.data_account);
+});
+
+function loadNotificationMessage(data_account) {
+    document.querySelector('.status_mess').style.display = 'inline-block';
+    if(document.querySelector('#messagesDropdown').getAttribute('aria-expanded') == 'true') {
+        document.querySelector('.status_mess').style.display = 'none';
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url:  '/admin/chat/load-chat-notification',
+            method: 'get',
+            data: '',
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function(data) {
+                
+                console.log(data);
+                document.querySelector('.big_mess_notification').innerHTML = ``;
+                let html = '';
+                data.forEach(element => {
+                    html += `
+                        <a class="dropdown-item" href="/admin/chat/show-chat/${element.id_send}" style="width: 350px;">
+                            <strong>${element.nameAccount}</strong>
+                            <span class="small float-right text-muted">11:21 AM</span>
+                            <div class="dropdown-message small">
+                                ${element.lastMess}
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    `;
+                });
+    
+    
+                document.querySelector('.big_mess_notification').insertAdjacentHTML('afterbegin', html);
+            },
+            error: function() {
+                console.log('load k được');
+            }
+        }); 
+    }
+}
+
+let messagesDropdown = document.querySelector('#messagesDropdown');
+messagesDropdown.addEventListener('click', function(e) {
+    if(e.currentTarget.getAttribute('aria-expanded') == 'false') {
+        document.querySelector('.status_mess').style.display = 'none';
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url:  '/admin/chat/load-chat-notification',
+            method: 'get',
+            data: '',
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function(data) {
+                
+                console.log(data);
+                document.querySelector('.big_mess_notification').innerHTML = ``;
+                let html = '';
+                data.forEach(element => {
+                    html += `
+                        <a class="dropdown-item" href="/admin/chat/show-chat/${element.id_send}" style="width: 350px;">
+                            <strong>${element.nameAccount}</strong>
+                            <span class="small float-right text-muted">11:21 AM</span>
+                            <div class="dropdown-message small">
+                                ${element.lastMess}
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    `;
+                });
+    
+    
+                document.querySelector('.big_mess_notification').insertAdjacentHTML('afterbegin', html);
+            },
+            error: function() {
+                console.log('load k được');
+            }
+        }); 
+    }
+
+});
 
 
 

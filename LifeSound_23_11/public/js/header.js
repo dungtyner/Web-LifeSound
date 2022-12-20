@@ -3,6 +3,18 @@ openLeftMoreIcon();
 openSearchProduct();
 // openCartForm();
 
+const socket = io('http://localhost:2306',{ transports : ['websocket'] });
+export {socket};
+socket.on('Admin đã gửi tin nhắn', data => {
+    // render_A_Mess(data.value_mess,el_parent.querySelector(".body-chatShop"),false )
+    document.querySelector('.header_notification_mess').style.display = 'block';
+    document.querySelector('.header_notification_mess').textContent = '1';
+
+});
+
+
+
+
 
 function openFaBars() {
     let openFaBars = document.querySelector('.icon-menu-more .fa-solid.fa-bars');

@@ -1,4 +1,7 @@
 import * as toolCommon from "../toolCommon/toolCommon.js";
+var data_account = {};
+export {data_account};
+
 function CheckLogined(methodWork)
 {
   $.ajax(
@@ -12,11 +15,13 @@ function CheckLogined(methodWork)
         // console.log(data.name_customer)
         var result = Object.values((data))[0];
         if(data.name_customer == '') {
+
           var image_url = '';
           var name_customer = '';
         } else {
           var image_url = data.avt_url[0].url_avatar_account;
           var name_customer = data.name_customer;
+          data_account = data;
         }
 
 

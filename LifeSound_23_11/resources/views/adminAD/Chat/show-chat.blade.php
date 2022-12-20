@@ -3,153 +3,88 @@
 
     <link rel="stylesheet" href="{{ asset('backend/css/chat.css') }}">
 
-    <div class="col-lg-12 border-total-frame-chat" style="">
-        <div class="card">
-            <div class="row" style="">
-                <div class="col">
-                    <section class="discussions">
-                        <div class="discussion search">
-                            <div class="searchbar">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                                <input class="input_LifeSound" type="text" placeholder="Tìm Kiếm tên người dùng...">
-                            </div>
-                        </div>
-                        <div class="discussion message-active">
-                            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                                <div class="online"></div>
-                            </div>
-                            <div class="desc-contact">
-                                <p class="name">Megan Leib</p>
-                                <p class="message">9 pm at the bar if possible 😳</p>
-                            </div>
-                            <div class="timer">12 sec</div>
-                        </div>
-            
-                        <div class="discussion"  data-toggle="collapse" href="#collapseAccount1">
-                            <div class="photo" style="background-image: url(https://i.pinimg.com/originals/a9/26/52/a926525d966c9479c18d3b4f8e64b434.jpg);">
-                                <div class="online"></div>
-                            </div>
-                            <div class="desc-contact">
-                                <p class="name">Dave Corlew</p>
-                                <p class="message">Let's meet for a coffee or something today ?</p>
-                            </div>
-                            <div class="timer">3 min</div>
-                        </div>
-                        <div class="collapse" id="collapseAccount1">
+
+
+    <div class="jumbotron m-0 p-0 bg-transparent">
+        <div class="row m-0 p-0 position-relative">
+            <div class="col-12 p-0 m-0 position-absolute" style="right: 0px;">
+                <div class="card border-0 rounded" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 6px 10px 0 rgba(0, 0, 0, 0.01);">
+
+                    <div class="card-header p-1 bg-light border border-top-0 border-left-0 border-right-0" style="color: rgba(96, 125, 139,1.0);">
+                        
+                        <img class="rounded float-left" style="width: 50px; height: 50px; object-fit: cover;" src="{{ $resultAccount->url_avatar_account }}"  />
+                        
+                        <h6 class="float-left" style="margin: 0px; margin-left: 10px;"> {{ $resultAccount->fname }} <i class="fa fa-check text-primary" title="Onaylanmış Hesap!"></i> </br><small> İstanbul, TR </small></h6>
                             
-                            <div class="messages-chat">
-                                <div class="message">
-                                    <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                                        <div class="online"></div>
-                                    </div>
-                                    <p class="text"> Hi, how are you ? </p>
-                                </div>
-                                <div class="message text-only">
-                                    <p class="text"> What are you doing tonight ? Want to go take a drink ?</p>
-                                </div>
-                                <p class="time"> 14h58</p>
-                                <div class="message text-only">
-                                    <div class="response">
-                                        <p class="text"> Hey Megan ! It's been a while 😃</p>
-                                    </div>
-                                </div>
-                                <div class="message text-only">
-                                    <div class="response">
-                                        <p class="text"> When can we meet ?</p>
-                                    </div>
-                                </div>
-                                <p class="response-time time"> 15h04</p>
-                                <div class="message">
-                                    <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                                        <div class="online"></div>
-                                    </div>
-                                    <p class="text"> 9 pm at the bar if possible 😳</p>
-                                </div>
-                                <p class="time"> 15h09</p>
-                                <div class="message">
-                                    <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                                        <div class="online"></div>
-                                    </div>
-                                    <p class="text"> 9 pm at the bar if possible 😳</p>
-                                </div>
-                                <div class="message">
-                                    <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-                                        <div class="online"></div>
-                                    </div>
-                                    <p class="text"> 9 pm at the bar if possible 😳</p>
-                                </div>
-                            </div>
-                            <div class="footer-chat">
-                                <i class="icon fa fa-smile-o clickable" style="font-size:25pt;" aria-hidden="true"></i>
-                                <input type="text" class="write-message" placeholder="Type your message here">
-                                <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true"></i>
+                        <div class=" show">
+
+                            <a id="dropdownMenuLink"  class="btn btn-sm float-right text-secondary" role="button"><h5><i class="fa fa-ellipsis-h" title="Ayarlar!" ></i>&nbsp;</h5></a>
+
+                            <div class="dropdown-menu dropdown-menu-right border p-0" >
+                                
+                                <a class="dropdown-item p-2 text-secondary" href="#"> <i class="fa fa-user m-1" ></i> Profile </a>
+                                <hr class="my-1"></hr>
+                                <a class="dropdown-item p-2 text-secondary" href="#"> <i class="fa fa-trash m-1" ></i> Delete </a>
+
                             </div>
                         </div>
+                            
+                    </div>
                 
-                        <div class="discussion">
-                            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80);">
-                            </div>
-                            <div class="desc-contact">
-                                <p class="name">Jerome Seiber</p>
-                                <p class="message">I've sent you the annual report</p>
-                            </div>
-                            <div class="timer">42 min</div>
+                    <div class="card bg-sohbet border-0 m-0 p-0" style="height: 65vh;">
+                        <div id="sohbet" class="card border-0 m-0 p-0 position-relative bg-transparent" style="overflow-y: auto; height: 100vh;">
+                        
+                            
+
                         </div>
-                
-                        <div class="discussion">
-                            <div class="photo" style="background-image: url(https://card.thomasdaubenton.com/img/photo.jpg);">
-                                <div class="online"></div>
+                    </div>
+
+                    <div class="w-100 card-footer p-0 bg-light border border-bottom-0 border-left-0 border-right-0">
+                        
+                            <div class="m-0 p-0"  >
+            
+                                <div class="row m-0 p-0 footer-chat">
+                                    <div class="col-9 m-0 p-1">
+                                    
+                                        <input id="text" class="mw-100 border rounded form-control input-admin-mess" type="text" name="text" title="Type a message..." placeholder="Nhật tin nhắn..." required>
+                                    
+                                    </div>
+                                    <div class="col-3 m-0 p-1">
+                                    
+                                        <button class="btn btn-outline-secondary rounded border w-100 btn-send-mess-from-admin" id_account="{{ $resultAccount->id_account }}" style="padding-right: 16px;"><i class="fa fa-paper-plane" ></i></button>
+                                                
+                                    </div>
+                                </div>
+                            
                             </div>
-                            <div class="desc-contact">
-                                <p class="name">Thomas Dbtn</p>
-                                <p class="message">See you tomorrow ! 🙂</p>
-                            </div>
-                            <div class="timer">2 hour</div>
-                        </div>
-                
-                        <div class="discussion">
-                            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1553514029-1318c9127859?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80);">
-                            </div>
-                            <div class="desc-contact">
-                                <p class="name">Elsie Amador</p>
-                                <p class="message">What the f**k is going on ?</p>
-                            </div>
-                            <div class="timer">1 day</div>
-                        </div>
-                
-                        <div class="discussion">
-                            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1541747157478-3222166cf342?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=967&q=80);">
-                            </div>
-                            <div class="desc-contact">
-                                <p class="name">Billy Southard</p>
-                                <p class="message">Ahahah 😂</p>
-                            </div>
-                            <div class="timer">4 days</div>
-                        </div>
-                
-                        <div class="discussion">
-                            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1435348773030-a1d74f568bc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80);">
-                                <div class="online"></div>
-                            </div>
-                            <div class="desc-contact">
-                                <p class="name">Paul Walker</p>
-                                <p class="message">You can't see me</p>
-                            </div>
-                            <div class="timer">1 week</div>
-                        </div>
-                    </section>
+                    </div>
+
                 </div>
-                
             </div>
+            
         </div>
     </div>
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script> --}}
+
+
+
 
     
 
 
 
 
-
+    <script type="module" src="{{ asset('backend/js/chat.js') }}"></script>
+    <script>
+        var id_account = {!! $resultAccount->id_account !!};
+        // console.log(id_account);
+    </script>
 
 
 @endsection
