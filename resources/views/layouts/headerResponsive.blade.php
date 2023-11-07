@@ -29,7 +29,7 @@
                 <div class="zoom-left-more-item">
                     <i class="fa-solid fa-magnifying-glass click-form-search"></i>
                 </div>
-                <div class="zoom-left-more-item">
+                <div class="zoom-left-more-item click_show_formLogin">
                     <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="zoom-left-more-item">

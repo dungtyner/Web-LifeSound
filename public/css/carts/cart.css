@@ -143,6 +143,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .cart-content-data .product-cart-content-data  .sub-cart-product-display .title-sub-cart-product .plus-minus-sub-cart-product .one-three-plus-minus-num {
@@ -291,4 +292,115 @@ input.value-quantityOrder__product_cart {
 
 span.unit-price-sub-cart-product {
     font-weight: bolder;
+}
+
+.btn-editOptProductCart {
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+.container-popupUpdateOptProductCart {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-popupUpdateOptProductCart {
+    min-width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: white;
+    border-radius: 7px;
+    flex-direction: column;
+}
+
+.itemBtn-Opt_popupUpdateProductCart {
+    padding: 10px;
+    border: 1px solid;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.listBtn-Opt_popupUpdateProductCart {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itemBtn-Opt_popupUpdateProductCart.active {
+    border: 1px solid pink;
+    background: black;
+    color: pink;
+}
+
+.list-optWithPopupUpdateOptProductCart {
+    display: flex;
+}
+
+.item-optWithPopupUpdateOptProductCart {
+    margin-right: 5px;
+    padding: 5px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.btn-optWithPopupUpdateOptProductCart.btnSave-optWithPopupUpdateOptProductCart {
+}
+
+.list-Opt_popupUpdateProductCart {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px 5px;
+}
+.item-optWithPopupUpdateOptProductCart.itemSave-optWithPopupUpdateOptProductCart {
+    background: pink;
+}
+
+.container-setQuantityOrderProductCart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input.ipt-setQuantityOrderProductCart {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.btnDecrease-setQuantityOrderProductCart
+,.btnIncrease-setQuantityOrderProductCart {
+    cursor: pointer;
+    padding: 0 5px;
+    border: 1px solid;
+}
+
+.sectionValue-setQuantityOrderProductCart {
+    display: flex;
+    padding: 0 5px;
+    border: 1px solid;
+    margin: 0 5px;
+}
+
+.part-setQuantityOrderProductCart {
+    margin-bottom: 5px;
+}
+
+.container-showPriceOrderProductCart {
+    display: flex;
+}
+
+.itemBtn-Opt_popupUpdateProductCart.noChoose {
+    cursor: not-allowed;
+    color: gray;
 }

@@ -42,8 +42,13 @@ function setActiveInList(
             var itemActive = elParent.querySelector(
                 textQuery + "." + classNameActive
             );
-            if (itemActive) itemActive.classList.remove(classNameActive);
-            event.currentTarget.classList.add(classNameActive);
+            
+            if(!event.currentTarget.classList.contains('noChoose'))
+            {
+                if (itemActive ) itemActive.classList.remove(classNameActive);
+                event.currentTarget.classList.add(classNameActive);
+            }
+            // console.log(event.currentTarget);
             if (methodWork) {
                 methodWork(
                     event.currentTarget.getAttribute("data-opt-product-detail"),
@@ -55,7 +60,7 @@ function setActiveInList(
 }
 
 function setNumOrderProduct(el_btnIncrease, el_btnDecrease, el_valueOrder,methodWorkWithIpt) {
-    // el_valueOrder.setAttribute('value',1);
+    // console.log(el_btnIncrease);
     el_btnIncrease.addEventListener("click", function (event) {
         if(parseInt((el_valueOrder.value))+1<=parseInt(el_valueOrder.max))
         {
@@ -99,9 +104,63 @@ function setNumOrderProduct(el_btnIncrease, el_btnDecrease, el_valueOrder,method
         }
     })
 }
+function displayAnItemInList(listItem,elDisplay,IsDisplayEl,methodWork)
+{
+    console.log(IsDisplayEl);
+    if(IsDisplayEl)
+    {
+        for(var item of listItem)
+        {
 
+            item.style.display='none';
+        }
+        elDisplay.style.display='block';
+    }
+    // else
+    // {
+    //     for(var item of listItem)
+    //     {
+    //         item.style.display='block';
+    //     }
+    //     elDisplay.style.display='none';
+    // }
+    if(methodWork)
+    {
+        methodWork();
+    }
+}
+function getValueInput(elIpt)
+{
+    return elIpt.value;
+}
+function handleKeyUpInput(elIpt,methodWork)
+{
+    elIpt.addEventListener('keyup',(event)=>{
+        if(methodWork)
+        {
+            methodWork(event);
+        }
+    })
+}
+function getAttributeWithElement(el,nameAttribute,valueNoExist)
+{
+    var Attribute=null;
+    if(el)
+    {
+        Attribute = el.getAttribute(nameAttribute)
+    }
+    else
+    {
+        Attribute=valueNoExist
+    }
+    return Attribute;
+}
 export {
     loadEventShowFormPopUp
     ,removeEventShowFormPopUp
     ,setActiveInList
-    ,setNumOrderProduct}
+    ,getAttributeWithElement
+    ,setNumOrderProduct
+    ,displayAnItemInList
+    ,getValueInput
+    ,handleKeyUpInput}

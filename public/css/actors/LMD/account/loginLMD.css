@@ -1,0 +1,11 @@
+body {
+    align-items: flex-start;
+}
+.ipt-CodeEmail.active
+{
+    display: block;
+}
+.ipt-CodeEmail
+{
+    display: none;
+}

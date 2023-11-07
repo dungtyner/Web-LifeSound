@@ -1,0 +1,346 @@
+
+.body-profile {
+    width: calc(100% - 375px);
+    height: 100%;
+    background: white;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.itemTab-header__body_profile {
+    width: max-content;
+    padding: 5px 10px;
+    margin-top: 5px;
+    /* margin-right: 5px; */
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.listTab-header__body_profile {
+    display: flex;
+    justify-content: space-between;
+    width: max-content;
+    max-width: 100%;
+}
+
+.hr-body_profile {
+    border-bottom: 3px solid black;
+    margin: 25px 0;
+}
+
+input.ipt-updateInfo_profile:not([type=checkbox]):not([type=radio]) {
+    outline: none;
+    height: 40px;
+    border-radius: 6px;
+    padding: 5px 10px;
+}
+
+.list-ipt__updateInfo_profile {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.itemIpt-updateInfo_profile {
+    margin-right: 10px;
+}
+.ipt-updateInfo_profile[type='radio']
+{
+    cursor: pointer;
+}
+
+.btn-updateAvatarAccount {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid;
+    width: max-content;
+    height: max-content;
+    margin-top: 20px;
+}
+
+.contentDefault-body_profile.contentBasicInfo-body_profile {
+    display: flex;
+}
+
+.sideInfoPhoto-contentBasicInfo__body_profile {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.sectionPhotoAvatar-contentBasicInfo__body_profile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+img.imgPhotoAvatar-contentBasicInfo__body_profile {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 12px 1px;
+}
+
+.field-updateInfo_profile {
+    
+}
+
+.btnSave-contentBasicInfo__body_profile {
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border: 1px solid;
+    border-radius: 6px;
+}
+
+.itemTab-header__body_profile.active {
+    background: black;
+    color: pink;
+}
+
+.contentDefault-body_profile.contentChangePass-body_profile {
+    display: flex;
+    justify-content: center;
+}   
+
+input#ipt-updateLnameAccount {
+    display: none;
+}
+/* CHAT SHOP */
+.body-chatShop
+{
+
+height: 100%;
+
+display: flex;
+
+flex-direction: column;
+}
+.header-chatShop
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-bottom: 1px solid pink;
+}
+.Left_header-chatShop
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.avatar-chatShop
+{
+    width: 60px;
+    height: 60px;
+}
+.name-chatShop
+{
+    height: max-content;
+    width: max-content;
+    padding: 5px 10px;
+    font-size: 30px;
+    color: #f5d3df;
+    stroke-width: 1px;
+    stroke: black;
+    stroke-opacity: 1;
+}
+.avatar-chatShop img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.content-chatShop {
+    min-height: 100px;
+    height: 338px;
+    width: 100%;
+    overflow-y: scroll;
+    padding: 5px 10px;
+    margin: 10px 0;
+    scroll-behavior: smooth;
+}
+.content-chatShop::-webkit-scrollbar-thumb
+{
+
+border-radius: 10px;
+
+width: 5px;
+
+background: pink;
+}
+.content-chatShop::-webkit-scrollbar
+{
+    width: 5px;
+}
+.message-chatShop {
+    background: pink;
+    width: max-content;
+    height: max-content;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: flex;
+}
+.sessionMessage-chatShop {
+display: flex;
+}
+.sessionMessage-chatShop +.sessionMessage-chatShop {
+    margin-top: 10px;
+}
+
+.message-chatShop img, .message-chatShop video {
+    width: max-content;
+    height: max-content;
+    max-width: 500px;
+    max-height: 500px;
+}
+.File-choose-chatShop img, .File-choose-chatShop video {
+    width: max-content;
+    height: max-content;
+    max-width: 100px;
+    max-height: 100%;
+    min-width: 100px;
+}
+.sessionMessage-chatShop.isMe
+{
+    width: 100%;
+    justify-content: start;
+    flex-direction: column;
+    align-items: end;
+}
+
+
+.formMessage-chatShop {
+    display: flex;
+    padding: 0 10px;
+    width: 100%;
+    align-items: center;
+}
+
+.center-formMessage-chatShop {
+    flex: 1;
+    width: 100%;
+    margin: 0px 20px;
+    height: 100%;
+}
+
+input.iptText-formMessage-chatShop {
+    width: 100%;
+    height: 36px;
+    outline: none;
+    border: 1px solid;
+}
+
+.footer-chatShop {
+    display: flex;
+    align-items: start;
+    position: relative;
+    flex-direction: column;
+}
+
+.btnSubmit-formMessage-chatShop {
+    cursor: pointer;
+    opacity: .2;
+}
+
+.btnFile-formMessage-chatShop {
+    cursor: pointer;
+}
+
+.btnDown-chatShop {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: scaleY(0) translateY(-100%) translateX(-50%);
+    transition: .35s;
+    cursor: pointer;
+}
+
+.btnDown-chatShop i {
+    font-size: 33px;
+}
+
+.btnDown-chatShop.showNow {
+    transform: scaleY(1) translateY(0) translateX(-50%);
+}
+
+.content-body_profile {
+    height: 360px;
+    flex: 1;
+}
+
+.previewFiles-chatShop {
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
+    transition: .25s;
+    height: 0;
+    transform: scaleY(0)translateY(+100%);
+    visibility: hidden;
+}
+.previewFiles-chatShop.showNow
+{
+    height: auto;
+    visibility: visible;
+
+    transform: scaleY(1)translateY(0);
+}
+
+.listFile-choose-chatShop {
+    display: flex;
+}
+
+.btnRemove-choose-chatShop {
+    position: absolute;
+    right: -12px;
+    top: -12px;
+}
+.message-chatShop:not(:first-child)
+{
+    margin-top: 10px;
+}
+.File-choose-chatShop {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.File-choose-chatShop:not(:first-child)
+{
+    margin-left: 20px;
+}
+.btnRemove-choose-chatShop i {
+    font-size: 24px;
+}
+
+.btnAddFiles-chatShop {
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid;
+    margin-right: 20px;
+    border-radius: 10px;
+    min-height: 100px;
+    cursor: pointer;
+}
+
+.btnAddFiles-chatShop i {
+    font-size: 30px;
+}
+.btnSubmit-formMessage-chatShop.accept
+{
+ opacity: 1;
+}

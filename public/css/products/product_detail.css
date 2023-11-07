@@ -470,7 +470,7 @@ div#popup-product__detail {
     overflow-y: scroll;
     /* justify-content: center; */
     overflow-x: hidden;
-    z-index: 1;
+    z-index: 3;
     animation: append-animate .3s linear;
 }
 
@@ -869,4 +869,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+.btn-CheckInCart__product_detail
+{
+    display: none;
+    background: yellow;
+    border: 2px solid;
 }

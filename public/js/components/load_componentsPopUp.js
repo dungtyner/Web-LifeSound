@@ -1,88 +1,134 @@
-import * as toolAccount from '../login.js';
-import * as toolCommon from '../toolCommon/toolCommon.js';
-import * as toolCart from '../cart/toolCart.js';
-var scriptRecaptcha= document.createElement('script');
-scriptRecaptcha.src='https://www.google.com/recaptcha/api.js';
+
+document.head.insertAdjacentHTML('beforeend',`<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>`);
+
+import * as toolAccount from "../accounts/toolAccount.js";
+import * as toolCommon from "../toolCommon/toolCommon.js";
+import * as toolCart from "../cart/toolCart.js";
+var scriptRecaptcha = document.createElement("script");
+scriptRecaptcha.src = "https://www.google.com/recaptcha/api.js";
 document.body.appendChild(scriptRecaptcha);
 insertPopUpLogin();
 insertPopUpSignUp();
 insertPopUpProfile();
-insertPopUpForgetPass()
+insertPopUpForgetPass();
 theFirstCheckLoginEd();
 insertPopUpChangePass();
 // toolCart.insertCartPopup();
 
-
-
 /*SIGN IN - SIGN OUT - SIGN OUT - FORGET PASSWORD - CHANGE PASSWORD*/
-function theFirstCheckLoginEd()
-{
-    toolAccount.CheckLogined(
-        (result)=>{
-            if(result)
-            {
-                toolCommon.removeEventShowFormPopUp("click","active",
-                document.querySelector(".container-loginPopup")
-                ,document.querySelector(".header__linklist .click_show_formLogin"),
-                document);
-    
-                toolCommon.loadEventShowFormPopUp("click","active",
-                document.querySelector(".container-proFilePopup")
-                ,document.querySelector(".header__linklist .click_show_formLogin"),
-                document);
-            }
-            else
-            {
-                toolCommon.loadEventShowFormPopUp("click","active",
-                document.querySelector(".container-loginPopup")
-                ,document.querySelector(".header__linklist .click_show_formLogin"),
+function theFirstCheckLoginEd() {
+    toolAccount.CheckLogined((result) => {
+        if (result) {
+            toolCommon.removeEventShowFormPopUp(
+                "click",
+                "active",
+                document.querySelector(".container-loginPopup"),
+                document.querySelector(
+                    ".header__linklist .click_show_formLogin"
+                ),
                 document
-                ,(elForm,classNameActive)=>{
-                    
-                }
             );
-            }
-        }
-    )
-}
-toolCommon.loadEventShowFormPopUp("click","active",
-document.querySelector(".container-forgetPassPopup")
-,document.querySelector(".container-loginPopup .click_show_FormForgetPass"),
-document);
-        toolCommon.loadEventShowFormPopUp("click","active",
-        document.querySelector(".container-signUpPopup")
-        ,document.querySelector(".container-loginPopup .click_show_FormSignUp"),
-        document);
-            toolCommon.loadEventShowFormPopUp("click","active",
-            document.querySelector(".container-loginPopup")
-            ,document.querySelector(".container-signUpPopup .click_show_formLogin"),
-            document);
-            toolCommon.loadEventShowFormPopUp("click","active",
-            document.querySelector(".container-changePassPopup")
-            ,document.querySelector(".container-proFilePopup .btnChangePassword"),
-            document);
+            toolCommon.removeEventShowFormPopUp(
+                "click",
+                "active",
+                document.querySelector(".container-loginPopup"),
+                document.querySelector(
+                    ".zoom-left-more-item.click_show_formLogin"
+                ),
+                document
+            );
 
-function InsBtnClose_Into_containerPopup(elParent)
-{
-    var btn_close_containerPopup =  document.createElement("div");
-    btn_close_containerPopup.className="btn_close_containerPopup";
-    btn_close_containerPopup.innerHTML=`
+            // toolCommon.loadEventShowFormPopUp("click","active",
+            // document.querySelector(".container-proFilePopup")
+            // ,document.querySelector(".header__linklist .click_show_formLogin"),
+            // document);
+            document
+                .querySelector(".header__linklist .click_show_formLogin")
+                .addEventListener("click", function () {
+                    location.href = "/account/profile/";
+                });
+            document
+            .querySelector(".zoom-left-more-item.click_show_formLogin")
+            .addEventListener("click", function () {
+                location.href = "/account/profile/";
+            });
+            document.querySelector(".header__linklist .click_show_formLogin").textContent =
+                "Profile";
+        } else if (location.href.indexOf("/account/profile/") >= 0) {
+            location.href = "/";
+        } else {
+            toolCommon.loadEventShowFormPopUp(
+                "click",
+                "active",
+                document.querySelector(".container-loginPopup"),
+                document.querySelector(
+                    ".header__linklist .click_show_formLogin"
+                ),
+                document,
+                (elForm, classNameActive) => {}
+            );
+
+            toolCommon.loadEventShowFormPopUp(
+                "click",
+                "active",
+                document.querySelector(".container-loginPopup"),
+                document.querySelector(
+                    ".zoom-left-more-item.click_show_formLogin"
+                ),
+                document,
+                (elForm, classNameActive) => {}
+            );
+            document.querySelector(".header__linklist .click_show_formLogin").textContent =
+                "Account";
+        }
+    });
+}
+toolCommon.loadEventShowFormPopUp(
+    "click",
+    "active",
+    document.querySelector(".container-forgetPassPopup"),
+    document.querySelector(".container-loginPopup .click_show_FormForgetPass"),
+    document
+);
+toolCommon.loadEventShowFormPopUp(
+    "click",
+    "active",
+    document.querySelector(".container-signUpPopup"),
+    document.querySelector(".container-loginPopup .click_show_FormSignUp"),
+    document
+);
+toolCommon.loadEventShowFormPopUp(
+    "click",
+    "active",
+    document.querySelector(".container-loginPopup"),
+    document.querySelector(".container-signUpPopup .click_show_formLogin"),
+    document
+);
+toolCommon.loadEventShowFormPopUp(
+    "click",
+    "active",
+    document.querySelector(".container-changePassPopup"),
+    document.querySelector(".container-proFilePopup .btnChangePassword"),
+    document
+);
+
+function InsBtnClose_Into_containerPopup(elParent) {
+    var btn_close_containerPopup = document.createElement("div");
+    btn_close_containerPopup.className = "btn_close_containerPopup";
+    btn_close_containerPopup.innerHTML = `
     <i class="fa-solid fa-xmark"></i>
 
-    `
-    btn_close_containerPopup.addEventListener("click",function(event)
-    {
+    `;
+    btn_close_containerPopup.addEventListener("click", function (event) {
         elParent.classList.remove("active");
-    })
+    });
     elParent.appendChild(btn_close_containerPopup);
 }
 
-function insertPopUpLogin()
-{
+function insertPopUpLogin() {
     var popup_login = document.createElement("div");
-    popup_login.className="containerPopup container-loginPopup"
-    popup_login.innerHTML=
-    `
+    popup_login.className = "containerPopup container-loginPopup";
+    popup_login.innerHTML = `
     
     <div class="wrapper_login">
     <img src="../images/dancer.gif"></img>
@@ -111,43 +157,52 @@ function insertPopUpLogin()
             <div class="field button">
                 <input class="btn-Submit__formSignIn" type="submit" name="submit" value="login" form="form1" required />
             </div>
+            <div class="flex items-center justify-end mt-4 loginSpecial loginWithGmail">
+                <a href="/auth/google">
+                    <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" style="margin-left: 3em;">
+                </a>
+            </div>
         </form>
         <div class="link">Create new account? <a class="click_show_FormSignUp" href="./register.php">Register</a></div>
         <div class="link">Forget password? <a class="click_show_FormForgetPass" href="./register.php">Restore Now</a></div>
     </section>
 </div>
     
-    `
+    `;
 
-    popup_login.querySelector(".formSignInPopUp").addEventListener("submit",function(event)
-    {
-        event.preventDefault();
-                console.log(toolAccount.SubmitSignIn(event.currentTarget,(elForm)=>
-        {
+    popup_login
+        .querySelector(".formSignInPopUp")
+        .addEventListener("submit", function (event) {
+            event.preventDefault();
+            console.log(
+                toolAccount.SubmitSignIn(event.currentTarget, (elForm) => {
+                    document.querySelector(
+                        ".header__linklist .click_show_formLogin"
+                    ).textContent = "Profile";
+                    theFirstCheckLoginEd();
 
-    document.querySelector(".header__linklist .click_show_formLogin").textContent="Profile"
-    theFirstCheckLoginEd();
-            
-            elForm.reset();
-            grecaptcha.reset();
-            elForm.closest(".containerPopup").classList.remove("active");
-        }));
-    })
+                    elForm.reset();
+                    grecaptcha.reset();
+                    elForm
+                        .closest(".containerPopup")
+                        .classList.remove("active");
+                })
+            );
+        });
 
     InsBtnClose_Into_containerPopup(popup_login);
 
     toolAccount.showPassWord(
-        ".field.input__text"
-        ,popup_login.querySelectorAll(".btn__show__password"));
+        ".field.input__text",
+        popup_login.querySelectorAll(".btn__show__password")
+    );
 
     document.body.appendChild(popup_login);
 }
-function insertPopUpProfile()
-{
+function insertPopUpProfile() {
     var popup_proFile = document.createElement("div");
-    popup_proFile.className="containerPopup container-proFilePopup"
-    popup_proFile.innerHTML=
-    `
+    popup_proFile.className = "containerPopup container-proFilePopup";
+    popup_proFile.innerHTML = `
   <div class="wrapper_profile">
         <div class="left">
             <div class="img-profile">
@@ -220,29 +275,30 @@ function insertPopUpProfile()
         </div>
         
     </div>
-    `
-    popup_proFile.querySelector(".btnSignOut_profile").addEventListener('click',function(event)
-    {
-        event.preventDefault();
-        toolAccount.RequestSignOut(()=>{
-            popup_proFile.classList.remove("active")
-            theFirstCheckLoginEd();
-            document.querySelector(".header__linklist .click_show_formLogin").textContent="Account"
+    `;
+    popup_proFile
+        .querySelector(".btnSignOut_profile")
+        .addEventListener("click", function (event) {
+            event.preventDefault();
+            toolAccount.RequestSignOut(() => {
+                popup_proFile.classList.remove("active");
+                theFirstCheckLoginEd();
+                document.querySelector(
+                    ".header__linklist .click_show_formLogin"
+                ).textContent = "Account";
+            });
         });
-    })
-    popup_proFile.querySelector(".btnclose-profile").addEventListener("click",function(event)
-    {
-        popup_proFile.classList.remove('active');
-    })
+    popup_proFile
+        .querySelector(".btnclose-profile")
+        .addEventListener("click", function (event) {
+            popup_proFile.classList.remove("active");
+        });
     document.body.appendChild(popup_proFile);
-
 }
-function insertPopUpForgetPass()
-{
+function insertPopUpForgetPass() {
     var popup_forgetPass = document.createElement("div");
-    popup_forgetPass.className="containerPopup container-forgetPassPopup"
-    popup_forgetPass.innerHTML=
-    `
+    popup_forgetPass.className = "containerPopup container-forgetPassPopup";
+    popup_forgetPass.innerHTML = `
   <div class="wrapper_forgetPass">
   <section class="section__form">
   <h1>Hi, welcome back</h1>
@@ -273,29 +329,26 @@ function insertPopUpForgetPass()
   </form>
 </section>    
     </div>
-    `
-    popup_forgetPass.querySelector(".formSignInPopUp").addEventListener("submit",function(event)
-    {
-        event.preventDefault();
-        toolAccount.RequestRestorePass(popup_forgetPass,(elForm)=>
-            {
-            });
-    })
+    `;
+    popup_forgetPass
+        .querySelector(".formSignInPopUp")
+        .addEventListener("submit", function (event) {
+            event.preventDefault();
+            toolAccount.RequestRestorePass(popup_forgetPass, (elForm) => {});
+        });
 
     InsBtnClose_Into_containerPopup(popup_forgetPass);
 
     toolAccount.showPassWord(
-        ".field.input__text"
-        ,popup_forgetPass.querySelectorAll(".btn__show__password"));
+        ".field.input__text",
+        popup_forgetPass.querySelectorAll(".btn__show__password")
+    );
     document.body.appendChild(popup_forgetPass);
-
 }
-function insertPopUpChangePass()
-{
+function insertPopUpChangePass() {
     var popup_changePass = document.createElement("div");
-    popup_changePass.className="containerPopup container-changePassPopup"
-    popup_changePass.innerHTML=
-    `
+    popup_changePass.className = "containerPopup container-changePassPopup";
+    popup_changePass.innerHTML = `
   <div class="wrapper_changePass">
   <section class="section__form">
   <h1>Hi, welcome back</h1>
@@ -329,29 +382,26 @@ function insertPopUpChangePass()
   </form>
 </section>    
     </div>
-    `
-    popup_changePass.querySelector(".formSignInPopUp").addEventListener("submit",function(event)
-    {
-        event.preventDefault();
-        toolAccount.RequestChangePass(popup_changePass,(elForm)=>
-            {
-            });
-    })
+    `;
+    popup_changePass
+        .querySelector(".formSignInPopUp")
+        .addEventListener("submit", function (event) {
+            event.preventDefault();
+            toolAccount.RequestChangePass(popup_changePass, (elForm) => {});
+        });
 
     InsBtnClose_Into_containerPopup(popup_changePass);
 
     toolAccount.showPassWord(
-        ".field.input__text"
-        ,popup_changePass.querySelectorAll(".btn__show__password"));
+        ".field.input__text",
+        popup_changePass.querySelectorAll(".btn__show__password")
+    );
     document.body.appendChild(popup_changePass);
-
 }
-function insertPopUpSignUp()
-{
+function insertPopUpSignUp() {
     var popup_signUp = document.createElement("div");
-    popup_signUp.className="containerPopup container-signUpPopup"
-    popup_signUp.innerHTML=
-    `
+    popup_signUp.className = "containerPopup container-signUpPopup";
+    popup_signUp.innerHTML = `
     <div class="wrapper_signup">
     <img src="../images/dancer.gif"></img>
     <section class="section__form">
@@ -360,14 +410,14 @@ function insertPopUpSignUp()
         <form action="" method="post" id="form2" class="formSignInPopUp">
             <div class="name-details">
                 <div class="field input__text">
-                    <input type="text" name="fname" placeholder="First name" required />
+                    <input type="text" name="fname" placeholder="Full name" required />
                     <div class="has-err">
                         <span></span>
                     </div>
                 </div>
-                <div class="field input__text">
+                <div class="field input__text" style='display:none'>
 
-                    <input type="text" name="lname" placeholder="Last name" required />
+                    <input type="text" name="lname" placeholder="Last name" value="" />
                     <div class="has-err">
                         <span></span>
                     </div>
@@ -412,34 +462,39 @@ function insertPopUpSignUp()
     </section>
 </div>
 
-    `
-    popup_signUp.querySelector(".formSignInPopUp").addEventListener("submit",function(event)
-    {
-        event.preventDefault();
-        console.log('OKiBae');
-                console.log(toolAccount.SubmitSignUp(event.currentTarget,(elForm)=>
-        {
+    `;
+    popup_signUp
+        .querySelector(".formSignInPopUp")
+        .addEventListener("submit", function (event) {
+            event.preventDefault();
+            console.log("OKiBae");
+            console.log(
+                toolAccount.SubmitSignUp(event.currentTarget, (elForm) => {
+                    document.querySelector(
+                        ".header__linklist .click_show_formLogin"
+                    ).textContent = "Profile";
+                    theFirstCheckLoginEd();
 
-    document.querySelector(".header__linklist .click_show_formLogin").textContent="Profile"
-    theFirstCheckLoginEd();
-            
-            elForm.reset();
-            // grecaptcha.reset();
-            elForm.closest(".containerPopup").classList.remove("active");
-        }));
-    })
+                    elForm.reset();
+                    // grecaptcha.reset();
+                    elForm
+                        .closest(".containerPopup")
+                        .classList.remove("active");
+                })
+            );
+        });
     InsBtnClose_Into_containerPopup(popup_signUp);
     toolAccount.showPassWord(
-        ".field.input__text"
-        ,popup_signUp.querySelectorAll(".btn__show__password"));
+        ".field.input__text",
+        popup_signUp.querySelectorAll(".btn__show__password")
+    );
     document.body.appendChild(popup_signUp);
 }
 
 /*PRODUCT DETAIL*/
-function render_productDetail(data_productDetail)
-{
+function render_productDetail(data_productDetail) {
     document.body.appendChild(
-    `
+        `
     <div id="popup-product__detail" class="show">
     <div class="container__product_detail">
             <div class="header-product__detail"><div class="btnCLose__product_detail"><i class="fa-solid fa-circle-xmark"></i></div></div>
@@ -1195,5 +1250,6 @@ function render_productDetail(data_productDetail)
             </div>
         </div>
     </div>
-    `)
+    `
+    );
 }

@@ -1,0 +1,9 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" fill="none" focusable="false" width="14" height="14" class="icon icon--rating-star-half   rating__star rating__star--half" viewBox="0 0 14 13"><defs><linearGradient id="rating-star-gradient-half">
+        <stop offset="50%" stop-color="rgb(var(--product-star-rating))"></stop>
+        <stop offset="50%" stop-color="rgb(var(--product-star-rating))" stop-opacity="0.4"></stop>
+      </linearGradient><linearGradient id="rating-star-gradient-half">
+        <stop offset="50%" stop-color="rgb(var(--product-star-rating))"></stop>
+        <stop offset="50%" stop-color="rgb(var(--product-star-rating))" stop-opacity="0.4"></stop>
+      </linearGradient></defs>
+        <path d="M7 0L8.6458 4.73475L13.6574 4.83688L9.66296 7.86525L11.1145 12.6631L7 9.8L2.8855 12.6631L4.33704 7.86525L0.342604 4.83688L5.3542 4.73475L7 0Z" fill="url(&quot;#rating-star-gradient-half&quot;)"></path>
+      </svg>
