@@ -23,8 +23,7 @@ class AccountController extends Controller{
     {
         if(isset($_SESSION['id_loginEd']))
         {
-            $account =Account::where('id_account','=',$_SESSION['id_loginEd'])
-            ->get();
+            $account = Account::where('id_account','=',$_SESSION['id_loginEd'])->get();
             if(count($account)>0)
             {
                 return view('account.profile', ['account'=>json_decode($account[0])]);
@@ -60,36 +59,33 @@ class AccountController extends Controller{
     public function handleSignIn(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email'=>'bail|required|max:225',
-            'password'=>'bail|required|min:6|max:18',
+            'email' => 'bail|required|max:225',
+            'password' => 'bail|required|min:6|max:18',
         ]);
-        if($validator->passes())
-        {
-        $error_validated=null;
-            $email = $_POST['email'];
-        $password = $_POST['password'];
-        $result = Account::where('email','=',$email)->where('password','=',$password)->get();
-             if(count(json_decode($result))==1)
-             {
-                //  print_r(json_decode($result));   
-                $_SESSION['id_loginEd']=json_decode($result)[0]->id_account;
-                // echo $_SESSION['id_loginEd'];
+
+        if ($validator->passes()) {
+            $error_validated = null;
+            $email = $request->input('email'); // Lấy dữ liệu email từ request
+            $password = $request->input('password'); // Lấy dữ liệu password từ request
+
+            $result = Account::where('email', '=', $email)->where('password', '=', $password)->get();
+
+            if (count(json_decode($result)) == 1) {
+                $_SESSION['id_loginEd'] = json_decode($result)[0]->id_account;
                 $account = true;
-             }
-             else
-             {
-                $account=null;
-             }
+            } else {
+                $account = null;
+            }
+        } else {
+            $account = null;
         }
-        else
-        {
-            $account=null;
-        }
-        return response()
-            ->json(['account'=>$account,
-                'validateErrors'=>$error_validated,
-            ]) ;
+
+        return response()->json([
+            'account' => $account,
+            'validateErrors' => $error_validated,
+        ]);
     }
+
     public function handleSignUp()
     {
         $secret = env('CAPTCHA_SECRET');
@@ -124,15 +120,14 @@ class AccountController extends Controller{
         $result =Account::where('id_account','=',$IDAccount)->get();
         if(count(json_decode($result))>0)
         {
-        return json_decode($result)[0]->email; 
-
+            return json_decode($result)[0]->email; 
         }
         else
         {
-
             return null; 
         }
     }
+
     public function handleCheckLoginEd()
     {
         if(isset($_SESSION['listProductOrder_cart']))
@@ -140,42 +135,35 @@ class AccountController extends Controller{
             if(isset($_SESSION['id_loginEd']))
             {
                 CartController::SaveListProductCart_forController_withEmail(AccountController::getEmailAccount_withIDAccount($_SESSION['id_loginEd']));
-
-            }
-            else
-            {
-
             }
         }
         if(isset($_SESSION['id_loginEd'])) {
             $avt_url = DB::table('accounts')->where('id_account', '=', $_SESSION['id_loginEd'])->get('url_avatar_account');
             $fname = DB::table('accounts')->where('id_account', '=', $_SESSION['id_loginEd'])->get('fname');
-            
             $cut_long_name = explode(" ", $fname[0]->fname);
             $after_cut = end($cut_long_name);
             $name_customer = substr($after_cut, 0, 7);
-            
-
-
-            // dd($avt_url);
             return response()->json(['account'=>isset($_SESSION['id_loginEd']), 'id_account'=>$_SESSION['id_loginEd'], 'avt_url' => json_decode($avt_url), 'name_customer' => $name_customer]);
         }
         return response()->json(['account'=>isset($_SESSION['id_loginEd']),'avt_url' => '', 'name_customer' => '']);
     }
+
     public function handleSignOut()
     {
         unset($_SESSION['id_loginEd']);
         return response()->json(['signOuted'=>!isset($_SESSION['id_loginEd']) ]) ;
     }
+
     function updateInfoBasicAccount()
     {
-        $result=Account::where('id_account','=',$_SESSION['id_loginEd'])
+        $result = Account::where('id_account','=',$_SESSION['id_loginEd'])
         ->limit(1)->update(array(
             'fname'=>$_POST['fname']
             ,'lname'=>$_POST['lname']
         ));
         return response()->json(['result'=>true]);
     }
+
     function updateAvatarAccount(Request $request )
     {   
         $urlImg='upload/images/AvatarAccount/';
@@ -269,15 +257,7 @@ class AccountController extends Controller{
         return response()->json(['Restore Password']);
     }
 
-
-
-
-
-
-
-
-
-    function uploadFileChat(Request $request) {
+    public function uploadFileChat(Request $request) {
         $inforLogin = $_SESSION['id_loginEd'];
         if($inforLogin){
 
@@ -330,10 +310,9 @@ class AccountController extends Controller{
         }
     }
 
-    function loadChat() {
+    public function loadChat() {
         $inforLogin = isset($_SESSION['id_loginEd']);
         if($inforLogin){
-
             $resultData = DB::table('message')
             ->where(['id_send' => $_SESSION['id_loginEd'], 'id_receive' => '0'])
             ->orWhere(function($query) 
@@ -341,7 +320,6 @@ class AccountController extends Controller{
                 $query->where("id_send", '0')
                     ->where("id_receive", $_SESSION['id_loginEd']);
             })
-            // ->orWhere(['id_send' => '0', 'id_receive' => $_SESSION['id_loginEd']])
             ->get(
                 array(
                     'id_mess',
@@ -352,11 +330,8 @@ class AccountController extends Controller{
                     'mess_time'
                     )
             );
-            // dd($resultData);
-
-
             return response()->json($resultData);
-        }else{
+        } else {
             return Redirect::to('/');
         }
     }
